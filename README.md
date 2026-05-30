@@ -92,22 +92,22 @@ npm run i18n:check
 
 ```text
 baby-tracker/
-├── prisma/
-│   └── schema.prisma
-├── src/
-│   ├── app/
-│   ├── components/
-│   ├── db/
-│   ├── hooks/
-│   ├── i18n/
-│   ├── lib/
-│   ├── providers/
-│   ├── types/
-│   └── validations/
-├── tests/
-├── middleware.ts
-├── package.json
-└── .env.example
+|-- prisma/
+|   `-- schema.prisma
+|-- src/
+|   |-- app/
+|   |-- components/
+|   |-- db/
+|   |-- hooks/
+|   |-- i18n/
+|   |-- lib/
+|   |-- providers/
+|   |-- types/
+|   `-- validations/
+|-- tests/
+|-- middleware.ts
+|-- package.json
+`-- .env.example
 ```
 
 ## Data Model (Overview)
