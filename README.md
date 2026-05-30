@@ -1,46 +1,46 @@
-# Baby Tracker
+# 宝宝成长记录（Baby Tracker）
 
-A baby daily-tracking app built with Next.js App Router, Prisma, and NextAuth.
+一个基于 Next.js App Router 的宝宝日常记录应用，支持多宝宝管理、记录追踪、可视化分析和基础后台管理。
 
-## Features
+## 功能特性
 
-- Email/password authentication
-- Multi-baby management
-- Record tracking:
-  - `FEEDING`
-  - `SLEEP`
-  - `DIAPER`
-  - `BATH`
-  - `MEDICAL` (visit, height/weight, vaccine)
-- Dashboard and analytics
-- Admin user/stats APIs
-- i18n-ready UI (Chinese/English)
-- Responsive layout
+- 邮箱/密码登录与注册（NextAuth Credentials）
+- 多宝宝管理
+- 记录类型：
+  - `FEEDING`（喂养）
+  - `SLEEP`（睡眠）
+  - `DIAPER`（尿布）
+  - `BATH`（洗澡）
+  - `MEDICAL`（医疗：就医/身高体重/疫苗）
+- 数据看板与分析图表
+- 管理后台（用户管理与统计）
+- 中英文界面支持
+- 响应式布局
 
-## Tech Stack
+## 技术栈
 
-- Next.js 14 (App Router)
+- Next.js 14（App Router）
 - TypeScript
 - Tailwind CSS + shadcn/ui + Radix UI
-- Prisma + SQLite (local development)
-- NextAuth.js v4 (JWT session)
+- Prisma + SQLite（本地开发）
+- NextAuth.js v4（JWT Session）
 - React Hook Form + Zod
 - TanStack Query
 
-## Requirements
+## 运行环境
 
-- Node.js 18+ (recommended: 20)
+- Node.js 18+（建议 Node.js 20）
 - npm 9+
 
-## Getting Started
+## 快速开始
 
-### 1. Install dependencies
+### 1. 安装依赖
 
 ```bash
 npm install
 ```
 
-### 2. Configure environment variables
+### 2. 配置环境变量
 
 macOS/Linux:
 
@@ -54,7 +54,7 @@ Windows PowerShell:
 Copy-Item .env.example .env
 ```
 
-Then edit `.env`:
+编辑 `.env`：
 
 ```env
 DATABASE_URL="file:./dev.db"
@@ -63,22 +63,22 @@ NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_TRUST_HOST=true
 ```
 
-### 3. Initialize database
+### 3. 初始化数据库
 
 ```bash
 npx prisma generate
 npx prisma db push
 ```
 
-### 4. Start development server
+### 4. 启动开发服务器
 
 ```bash
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+访问：`http://localhost:3000`
 
-## Useful Scripts
+## 常用脚本
 
 ```bash
 npm run dev
@@ -88,7 +88,7 @@ npm test
 npm run i18n:check
 ```
 
-## Project Structure
+## 项目结构
 
 ```text
 baby-tracker/
@@ -110,14 +110,14 @@ baby-tracker/
 `-- .env.example
 ```
 
-## Data Model (Overview)
+## 数据模型（概要）
 
 ### User
 
-- `email` (unique)
-- `password` (hashed)
+- `email`（唯一）
+- `password`（哈希存储）
 - `name`
-- `role`: `USER` / `ADMIN` / `SUPER_ADMIN`
+- `role`：`USER` / `ADMIN` / `SUPER_ADMIN`
 
 ### Baby
 
@@ -128,20 +128,20 @@ baby-tracker/
 
 ### Record
 
-- `type`: `FEEDING` / `SLEEP` / `DIAPER` / `BATH` / `MEDICAL`
+- `type`：`FEEDING` / `SLEEP` / `DIAPER` / `BATH` / `MEDICAL`
 - `babyId`
 - `startTime` / `endTime`
-- `medicalCategory`: `MEDICAL_VISIT` / `HEIGHT_WEIGHT` / `VACCINE`
+- `medicalCategory`：`MEDICAL_VISIT` / `HEIGHT_WEIGHT` / `VACCINE`
 
-## API Overview
+## API 概览
 
-### Auth
+### 认证
 
 - `POST /api/users`
 - `GET|POST /api/auth/[...nextauth]`
 - `GET /api/auth/session`
 
-### Babies
+### 宝宝
 
 - `GET /api/babies`
 - `POST /api/babies`
@@ -149,7 +149,7 @@ baby-tracker/
 - `PATCH /api/babies/[id]`
 - `DELETE /api/babies/[id]`
 
-### Records
+### 记录
 
 - `GET /api/records`
 - `POST /api/records`
@@ -157,19 +157,19 @@ baby-tracker/
 - `PATCH /api/records/[id]`
 - `DELETE /api/records/[id]`
 
-### Admin
+### 管理后台
 
 - `GET /api/admin/stats`
 - `GET /api/admin/users`
 - `PATCH /api/admin/users/[id]`
 - `DELETE /api/admin/users/[id]`
 
-## Before Publishing to GitHub
+## 上传 GitHub 前检查
 
-- Do not commit `.env`
-- Do not commit local DB files like `prisma/dev.db`
-- Use a strong random `NEXTAUTH_SECRET` in production
-- Recommended checks:
+- 不要提交 `.env`
+- 不要提交本地数据库 `prisma/dev.db`
+- 生产环境务必使用强随机 `NEXTAUTH_SECRET`
+- 提交前建议执行：
 
 ```bash
 npm run build
